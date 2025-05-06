@@ -31,3 +31,12 @@ Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show')
 Route::post('/profile/create', [ProfileController::class, 'store'])->name('profile.store');
 
 
+// Single post image download
+Route::get('/posts/{post}/download', [PostController::class, 'downloadImage'])
+    ->name('posts.download')
+    ->middleware('auth'); // Optional: require authentication
+
+// Batch download multiple post images
+Route::post('/posts/batch-download', [PostController::class, 'batchDownloadImages'])
+    ->name('posts.batch-download')
+    ->middleware('auth'); // Optional: require authentication
